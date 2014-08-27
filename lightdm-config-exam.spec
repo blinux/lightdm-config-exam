@@ -32,6 +32,8 @@ Group:          System/X11/Displaymanagers
 
 Source0:        lightdm.conf
 BuildRequires:  lightdm
+BuildRequires:	lightdm-gtk-greeter
+BuildRequires:	sysconfig-cli
 Requires:	sysconfig-cli
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
