@@ -33,7 +33,6 @@ Group:          System/X11/Displaymanagers
 Source0:        lightdm.conf
 BuildRequires:  lightdm
 BuildRequires:	lightdm-gtk-greeter
-BuildRequires:	sysconfig-cli
 Requires:	sysconfig-cli
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -51,30 +50,19 @@ LightDM configuration for exam mode of Blinux
 
 %install
 install -D -p -m 644 %{SOURCE0} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf
-sysconfig-cli displaymanager DISPLAYMANAGER_AUTOLOGIN exam
-sysconfig-cli displaymanager DISPLAYMANAGER_PASSWORD_LESS_LOGIN yes
 
 %clean
 rm -rf %{buildroot}
 
 %post
 sysconfig-cli displaymanager DISPLAYMANAGER lightdm
+sysconfig-cli displaymanager DISPLAYMANAGER_AUTOLOGIN exam
+sysconfig-cli displaymanager DISPLAYMANAGER_PASSWORD_LESS_LOGIN yes
 
 %files
 %defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/lightdm/lightdm-gtk-greeter.conf
-%{_datadir}/pixmaps/lightdm-gtk-greeter-BLINUX.png
 
 %changelog
-* Tue Aug 12 2014 Emmanuel Vadot <elbarto@bocal.org> - 2.0-0
-- Bump to 2.0 for branding
-
-* Mon Aug 04 2014 Emmanuel Vadot <elbarto@bocal.org> - 1.1-1
-- Change Requires to lightdm-gtk-greeter
-
-* Mon Aug 04 2014 Emmanuel Vadot <elbarto@bocal.org> - 1.1-0
-- Update config files
-- Add Requires
-
-* Sun Aug 03 2014 Emmanuel Vadot <elbarto@bocal.org> - 1.0-0
-- Initial package creation
+* Wed Aug 27 2014 Emmanuel Vadot <elbarto@bocal.org> - 0.1-0
+- Package creation
