@@ -33,6 +33,7 @@ Group:          System/X11/Displaymanagers
 Source0:        lightdm.conf
 BuildRequires:  lightdm
 BuildRequires:	lightdm-gtk-greeter
+BuildRequires:	sysconfig-cli
 Requires:	sysconfig-cli
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -61,7 +62,7 @@ sysconfig-cli displaymanager DISPLAYMANAGER_PASSWORD_LESS_LOGIN yes
 
 %files
 %defattr(-,root,root)
-%config(noreplace) %{_sysconfdir}/lightdm/lightdm-gtk-greeter.conf
+%config(noreplace) %{_sysconfdir}/lightdm/lightdm.conf
 
 %changelog
 * Wed Aug 27 2014 Emmanuel Vadot <elbarto@bocal.org> - 0.1-0
